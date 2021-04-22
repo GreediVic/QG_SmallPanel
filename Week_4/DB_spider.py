@@ -161,8 +161,8 @@ class DbSpider(object):
                 print("访问结束")
                 break  # 这样就退出去
             # freeze(1, 3)  # 随机暂停
-            if i == 3:
-                break
+            if i == 3:  # 用来代码预跑的，可以快点看看结果
+                break  # 如果要完整请注释这两行代码
         self.all_url = [x for i in movies_url for x in i]  # 展开 维度2->1
 
         if loss:
@@ -309,7 +309,8 @@ if __name__ == '__main__':
         """
         倘若报错：
         由于编码有问题，无论在to_csv的时候使用的是"utf_8"还是"utf_8_sig"都会导致在打开文件准备写入
-        数据库的时候出错，只能通过手动将文件改成gbk的方式编码（这里手动利用的是notepad++）
+        数据库的时候出错，只能通过手动将文件改成gbk（或UTF-8，修改时要同时改写入数据库的打码）
+        的方式编码（这里手动利用的是notepad++）
         最后再从控制台中输入start.write_in_csv()的方式进行写入数据库
         """
         start.write_in_database()
